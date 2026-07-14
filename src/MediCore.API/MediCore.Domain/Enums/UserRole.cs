@@ -1,0 +1,12 @@
+namespace MediCore.Domain.Enums;
+
+public enum UserRole
+{
+    SuperAdmin = 1,
+    ClinicAdmin = 2,
+    Doctor = 3,
+    Receptionist = 4,
+    Nurse = 5,
+    Accountant = 6,
+    Pharmacist = 7
+}
