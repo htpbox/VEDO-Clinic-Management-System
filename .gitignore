@@ -1,18 +1,47 @@
 # Flutter
-**/build/
-**/.dart_tool/
-**/.flutter-plugins
-**/.flutter-plugins-dependencies
-**/pubspec.lock
+.dart_tool/
+.packages
+.pub/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.flutter-versions
+.idea/
+.vscode/
 
-# .NET
-**/bin/
-**/obj/
-**/*.user
-**/appsettings.Development.json
+# Windows
+*.exe
+*.dll
+*.pdb
+*.obj
+*.ilk
+*.cache
 
-# General
+# Visual Studio
+.vs/
+bin/
+obj/
+
+# Rider
+.idea/
+
+# Logs
+*.log
+
+# NuGet
+packages/
+
+# User files
+*.user
+*.suo
+
+# Secrets
+appsettings.Development.json
 .env
 .env.*
-*.log
+
+# Generated
+coverage/
+
+# macOS
 .DS_Store
