@@ -15,6 +15,7 @@ class AppShell extends StatelessWidget {
     if (location == AppConstants.appointmentsRoute) return 'المواعيد';
     if (location == AppConstants.queueRoute) return 'قائمة الانتظار';
     if (location == AppConstants.staffRoute) return 'الموظفون';
+    if (location == AppConstants.reportsRoute) return 'التقارير';
     return AppConstants.appName;
   }
 

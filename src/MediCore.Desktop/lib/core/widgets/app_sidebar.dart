@@ -77,6 +77,12 @@ class AppSidebar extends StatelessWidget {
             isActive: currentLocation == AppConstants.staffRoute,
             onTap: () => context.go(AppConstants.staffRoute),
           ),
+          _SidebarItem(
+            icon: Icons.bar_chart_outlined,
+            label: 'التقارير',
+            isActive: currentLocation == AppConstants.reportsRoute,
+            onTap: () => context.go(AppConstants.reportsRoute),
+          ),
         ],
       ),
     );
