@@ -20,4 +20,5 @@ class AppConstants {
   static const String patientsRoute = '/patients';
   static const String appointmentsRoute = '/appointments';
   static const String queueRoute = '/queue';
+  static const String staffRoute = '/staff';
 }

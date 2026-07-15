@@ -7,6 +7,7 @@ import '../../features/auth/presentation/screens/login_screen.dart';
 import '../../features/dashboard/presentation/screens/dashboard_screen.dart';
 import '../../features/appointments/presentation/screens/queue_screen.dart';
 import '../../features/patients/presentation/screens/patients_list_screen.dart';
+import '../../features/staff/presentation/screens/staff_list_screen.dart';
 import '../constants/app_constants.dart';
 import '../widgets/app_shell.dart';
 
@@ -56,6 +57,11 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             path: AppConstants.appointmentsRoute,
             name: 'appointments',
             builder: (context, state) => const AppointmentsListScreen(),
+          ),
+          GoRoute(
+            path: AppConstants.staffRoute,
+            name: 'staff',
+            builder: (context, state) => const StaffListScreen(),
           ),
         ],
       ),

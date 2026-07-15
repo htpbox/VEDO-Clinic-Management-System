@@ -20,4 +20,6 @@ class StaffMemberModel extends StaffMember {
       isActive: json['isActive'] as bool,
     );
   }
+
+  StaffMember toEntity() => this;
 }
