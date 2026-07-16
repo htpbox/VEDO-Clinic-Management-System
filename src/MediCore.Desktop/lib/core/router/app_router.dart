@@ -9,6 +9,7 @@ import '../../features/appointments/presentation/screens/queue_screen.dart';
 import '../../features/patients/presentation/screens/patients_list_screen.dart';
 import '../../features/staff/presentation/screens/staff_list_screen.dart';
 import '../../features/reports/presentation/screens/reports_screen.dart';
+import '../../features/settings/presentation/screens/settings_screen.dart';
 import '../constants/app_constants.dart';
 import '../widgets/app_shell.dart';
 
@@ -68,6 +69,11 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             path: AppConstants.reportsRoute,
             name: 'reports',
             builder: (context, state) => const ReportsScreen(),
+          ),
+          GoRoute(
+            path: AppConstants.settingsRoute,
+            name: 'settings',
+            builder: (context, state) => const SettingsScreen(),
           ),
         ],
       ),

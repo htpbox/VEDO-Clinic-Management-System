@@ -17,6 +17,7 @@ public class UnitOfWork : IUnitOfWork
     private IInvoiceRepository? _invoices;
     private IPaymentRepository? _payments;
     private IUserRepository? _users;
+    private ITenantRepository? _tenants;
 
     public UnitOfWork(MediCoreDbContext context)
     {
@@ -38,6 +39,8 @@ public class UnitOfWork : IUnitOfWork
         => _payments ??= new PaymentRepository(_context);
     public IUserRepository Users
         => _users ??= new UserRepository(_context);
+    public ITenantRepository Tenants
+        => _tenants ??= new TenantRepository(_context);
 
     public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         => await _context.SaveChangesAsync(cancellationToken);

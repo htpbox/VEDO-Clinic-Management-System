@@ -12,6 +12,7 @@ public interface IUnitOfWork : IDisposable
     IInvoiceRepository Invoices { get; }
     IPaymentRepository Payments { get; }
     IUserRepository Users { get; }
+    ITenantRepository Tenants { get; }
 
     // Transaction Management
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
