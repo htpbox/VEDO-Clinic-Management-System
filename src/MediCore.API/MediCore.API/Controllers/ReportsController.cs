@@ -26,6 +26,7 @@ public class ReportsController : ControllerBase
     }
 
     [HttpGet("revenue")]
+    [Authorize(Roles = "SuperAdmin,ClinicAdmin,Accountant")]
     public async Task<IActionResult> GetRevenueSummary([FromQuery] DateOnly? from, [FromQuery] DateOnly? to)
     {
         var tenantId = GetTenantId();

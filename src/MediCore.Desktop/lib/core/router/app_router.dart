@@ -10,6 +10,7 @@ import '../../features/patients/presentation/screens/patients_list_screen.dart';
 import '../../features/staff/presentation/screens/staff_list_screen.dart';
 import '../../features/reports/presentation/screens/reports_screen.dart';
 import '../../features/settings/presentation/screens/settings_screen.dart';
+import '../../features/backup/presentation/screens/backup_screen.dart';
 import '../constants/app_constants.dart';
 import '../widgets/app_shell.dart';
 
@@ -74,6 +75,11 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             path: AppConstants.settingsRoute,
             name: 'settings',
             builder: (context, state) => const SettingsScreen(),
+          ),
+          GoRoute(
+            path: AppConstants.backupRoute,
+            name: 'backup',
+            builder: (context, state) => const BackupScreen(),
           ),
         ],
       ),

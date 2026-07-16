@@ -23,4 +23,5 @@ class AppConstants {
   static const String staffRoute = '/staff';
   static const String reportsRoute = '/reports';
   static const String settingsRoute = '/settings';
+  static const String backupRoute = '/backup';
 }

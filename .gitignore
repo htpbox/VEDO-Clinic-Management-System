@@ -21,6 +21,8 @@ build/
 .vs/
 bin/
 obj/
+backups/
+*.dump
 
 # Rider
 .idea/

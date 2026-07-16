@@ -34,6 +34,7 @@ public class StaffController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Roles = "SuperAdmin,ClinicAdmin")]
     public async Task<IActionResult> Create([FromBody] CreateStaffDto dto)
     {
         var tenantId = GetTenantId();
@@ -43,6 +44,7 @@ public class StaffController : ControllerBase
     }
 
     [HttpPut("{id:guid}")]
+    [Authorize(Roles = "SuperAdmin,ClinicAdmin")]
     public async Task<IActionResult> Update(Guid id, [FromBody] UpdateStaffDto dto)
     {
         var tenantId = GetTenantId();
@@ -51,6 +53,7 @@ public class StaffController : ControllerBase
     }
 
     [HttpPut("{id:guid}/deactivate")]
+    [Authorize(Roles = "SuperAdmin,ClinicAdmin")]
     public async Task<IActionResult> Deactivate(Guid id)
     {
         var tenantId = GetTenantId();
@@ -59,6 +62,7 @@ public class StaffController : ControllerBase
     }
 
     [HttpPut("{id:guid}/activate")]
+    [Authorize(Roles = "SuperAdmin,ClinicAdmin")]
     public async Task<IActionResult> Activate(Guid id)
     {
         var tenantId = GetTenantId();

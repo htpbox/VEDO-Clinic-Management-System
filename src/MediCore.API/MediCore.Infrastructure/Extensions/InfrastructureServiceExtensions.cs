@@ -4,6 +4,7 @@ using MediCore.Application.Interfaces.Services;
 using MediCore.Infrastructure.Data;
 using MediCore.Infrastructure.Repositories;
 using MediCore.Infrastructure.Security;
+using MediCore.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,8 +29,10 @@ public static class InfrastructureServiceExtensions
         services.AddScoped<IInvoiceRepository, InvoiceRepository>();
         services.AddScoped<IPaymentRepository, PaymentRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<ITenantRepository, TenantRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
+        services.AddScoped<IBackupService, BackupService>();
 
         return services;
     }

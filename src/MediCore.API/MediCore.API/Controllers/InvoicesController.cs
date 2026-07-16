@@ -36,6 +36,7 @@ public class InvoicesController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Roles = "SuperAdmin,ClinicAdmin,Receptionist,Accountant")]
     public async Task<IActionResult> Create([FromBody] CreateInvoiceDto dto)
     {
         var tenantId = GetTenantId();
@@ -50,6 +51,7 @@ public class InvoicesController : ControllerBase
     }
 
     [HttpPost("{id:guid}/payments")]
+    [Authorize(Roles = "SuperAdmin,ClinicAdmin,Receptionist,Accountant")]
     public async Task<IActionResult> RecordPayment(Guid id, [FromBody] RecordPaymentDto dto)
     {
         var tenantId = GetTenantId();

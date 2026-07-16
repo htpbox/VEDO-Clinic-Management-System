@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import '../../features/auth/domain/enums/user_role.dart';
+import '../../features/auth/presentation/providers/auth_notifier.dart';
 import '../constants/app_constants.dart';
 import '../theme/app_theme.dart';
 
-class AppSidebar extends StatelessWidget {
+class AppSidebar extends ConsumerWidget {
   final String currentLocation;
 
   const AppSidebar({super.key, required this.currentLocation});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final role = ref.watch(authNotifierProvider).user?.role;
+    final isAdmin =
+        role == UserRole.superAdmin || role == UserRole.clinicAdmin;
+    final canViewReports =
+        isAdmin || role == UserRole.accountant;
+
     return Container(
       width: 260,
       color: AppTheme.surfaceColor,
@@ -71,18 +80,33 @@ class AppSidebar extends StatelessWidget {
             isActive: currentLocation == AppConstants.appointmentsRoute,
             onTap: () => context.go(AppConstants.appointmentsRoute),
           ),
+          if (isAdmin)
+            _SidebarItem(
+              icon: Icons.badge_outlined,
+              label: 'الموظفون',
+              isActive: currentLocation == AppConstants.staffRoute,
+              onTap: () => context.go(AppConstants.staffRoute),
+            ),
+          if (canViewReports)
+            _SidebarItem(
+              icon: Icons.bar_chart_outlined,
+              label: 'التقارير',
+              isActive: currentLocation == AppConstants.reportsRoute,
+              onTap: () => context.go(AppConstants.reportsRoute),
+            ),
           _SidebarItem(
-            icon: Icons.badge_outlined,
-            label: 'الموظفون',
-            isActive: currentLocation == AppConstants.staffRoute,
-            onTap: () => context.go(AppConstants.staffRoute),
+            icon: Icons.settings_outlined,
+            label: 'الإعدادات',
+            isActive: currentLocation == AppConstants.settingsRoute,
+            onTap: () => context.go(AppConstants.settingsRoute),
           ),
-          _SidebarItem(
-            icon: Icons.bar_chart_outlined,
-            label: 'التقارير',
-            isActive: currentLocation == AppConstants.reportsRoute,
-            onTap: () => context.go(AppConstants.reportsRoute),
-          ),
+          if (role == UserRole.superAdmin)
+            _SidebarItem(
+              icon: Icons.backup_outlined,
+              label: 'النسخ الاحتياطي',
+              isActive: currentLocation == AppConstants.backupRoute,
+              onTap: () => context.go(AppConstants.backupRoute),
+            ),
         ],
       ),
     );

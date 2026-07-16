@@ -85,6 +85,19 @@ class ApiClient {
     }
   }
 
+  /// For binary downloads (e.g. backup files) - returns raw bytes instead of
+  /// going through the JSON envelope the other methods expect.
+  Future<Response<List<int>>> download(String path) async {
+    try {
+      return await _dio.get<List<int>>(
+        path,
+        options: Options(responseType: ResponseType.bytes),
+      );
+    } on DioException catch (e) {
+      throw _handleError(e);
+    }
+  }
+
   AppException _handleError(DioException e) {
     switch (e.type) {
       case DioExceptionType.connectionTimeout:

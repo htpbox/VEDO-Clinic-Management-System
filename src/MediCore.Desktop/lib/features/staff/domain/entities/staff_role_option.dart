@@ -11,10 +11,15 @@ class StaffRoleOption {
 const List<StaffRoleOption> assignableStaffRoles = [
   StaffRoleOption('ClinicAdmin', 'مدير العيادة'),
   StaffRoleOption('Doctor', 'طبيب'),
+  StaffRoleOption('SeniorDoctor', 'طبيب استشاري'),
   StaffRoleOption('Receptionist', 'استقبال'),
   StaffRoleOption('Nurse', 'تمريض'),
+  StaffRoleOption('HeadNurse', 'رئيس تمريض'),
   StaffRoleOption('Accountant', 'محاسب'),
   StaffRoleOption('Pharmacist', 'صيدلي'),
+  StaffRoleOption('LabTechnician', 'فني معمل'),
+  StaffRoleOption('RadiologyTechnician', 'فني أشعة'),
+  StaffRoleOption('Viewer', 'مشاهدة فقط'),
 ];
 
 String staffRoleLabel(String role) {
