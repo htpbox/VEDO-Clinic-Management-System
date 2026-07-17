@@ -82,12 +82,13 @@ public class AppointmentRepository : GenericRepository<Appointment>, IAppointmen
         return await query.AnyAsync();
     }
 
-    public async Task<IEnumerable<Appointment>> GetPendingRemindersAsync()
+    public async Task<IEnumerable<Appointment>> GetPendingRemindersAsync(Guid tenantId)
     {
         var today = DateOnly.FromDateTime(DateTime.UtcNow);
         return await _context.Set<Appointment>()
             .Include(a => a.Patient)
-            .Where(a => a.AppointmentDate == today
+            .Where(a => a.TenantId == tenantId
+                && a.AppointmentDate == today
                 && !a.ReminderSent
                 && a.Status == Domain.Enums.AppointmentStatus.Booked
                 && !a.IsDeleted)

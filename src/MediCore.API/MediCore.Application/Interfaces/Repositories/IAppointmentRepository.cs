@@ -9,5 +9,5 @@ public interface IAppointmentRepository : IGenericRepository<Appointment>
     Task<IEnumerable<Appointment>> GetByPatientAsync(Guid tenantId, Guid patientId);
     Task<IEnumerable<Appointment>> GetTodayAppointmentsAsync(Guid tenantId, Guid branchId);
     Task<bool> HasConflictAsync(Guid doctorId, DateOnly date, TimeOnly startTime, TimeOnly endTime, Guid? excludeId = null);
-    Task<IEnumerable<Appointment>> GetPendingRemindersAsync();
+    Task<IEnumerable<Appointment>> GetPendingRemindersAsync(Guid tenantId);
 }

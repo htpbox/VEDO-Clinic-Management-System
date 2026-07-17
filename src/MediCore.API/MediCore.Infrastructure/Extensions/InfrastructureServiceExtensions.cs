@@ -2,12 +2,14 @@ using MediCore.Application.Interfaces;
 using MediCore.Application.Interfaces.Repositories;
 using MediCore.Application.Interfaces.Services;
 using MediCore.Infrastructure.Data;
+using MediCore.Infrastructure.BackgroundServices;
 using MediCore.Infrastructure.Repositories;
 using MediCore.Infrastructure.Security;
 using MediCore.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace MediCore.Infrastructure.Extensions;
 
@@ -33,6 +35,8 @@ public static class InfrastructureServiceExtensions
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
         services.AddScoped<IBackupService, BackupService>();
+        services.AddScoped<INotificationSender, LoggingNotificationSender>();
+        services.AddHostedService<AppointmentReminderBackgroundService>();
 
         return services;
     }

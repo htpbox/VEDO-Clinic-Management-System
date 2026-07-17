@@ -2,6 +2,7 @@ using MediCore.Application.Common;
 using MediCore.Application.DTOs.Settings;
 using MediCore.Application.Interfaces;
 using MediCore.Application.Interfaces.Services;
+using MediCore.Domain.Entities;
 
 namespace MediCore.Application.Services;
 
@@ -44,7 +45,7 @@ public class SettingsService : ISettingsService
         return ApiResponse<TenantSettingsDto>.Ok(MapToDto(tenant), "تم حفظ الإعدادات بنجاح");
     }
 
-    private static TenantSettingsDto MapToDto(Domain.Entities.Tenant tenant) => new()
+    private static TenantSettingsDto MapToDto(Tenant tenant) => new()
     {
         Id = tenant.Id,
         Name = tenant.Name,
