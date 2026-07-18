@@ -19,6 +19,31 @@ public class UnitOfWork : IUnitOfWork
     private IUserRepository? _users;
     private ITenantRepository? _tenants;
 
+    private IWarehouseRepository? _warehouses;
+    private IInventoryCategoryRepository? _inventoryCategories;
+    private IInventoryItemRepository? _inventoryItems;
+    private ISupplierRepository? _suppliers;
+    private IStockLevelRepository? _stockLevels;
+    private IStockBatchRepository? _stockBatches;
+    private IStockMovementRepository? _stockMovements;
+    private IStockAdjustmentRepository? _stockAdjustments;
+    private IStockTransferRepository? _stockTransfers;
+    private IPurchaseOrderRepository? _purchaseOrders;
+    private IGoodsReceiptRepository? _goodsReceipts;
+    private IPurchaseReturnRepository? _purchaseReturns;
+    private ISupplierPaymentRepository? _supplierPayments;
+    private IPhysicalStockCountRepository? _physicalStockCounts;
+
+    private IPharmacySaleRepository? _pharmacySales;
+
+    private ILabTestCatalogRepository? _labTestCatalog;
+    private ILabOrderRepository? _labOrders;
+    private ILabResultRepository? _labResults;
+
+    private IRadiologyTestCatalogRepository? _radiologyTestCatalog;
+    private IRadiologyOrderRepository? _radiologyOrders;
+    private IRadiologyReportRepository? _radiologyReports;
+
     public UnitOfWork(MediCoreDbContext context)
     {
         _context = context;
@@ -41,6 +66,52 @@ public class UnitOfWork : IUnitOfWork
         => _users ??= new UserRepository(_context);
     public ITenantRepository Tenants
         => _tenants ??= new TenantRepository(_context);
+
+    public IWarehouseRepository Warehouses
+        => _warehouses ??= new WarehouseRepository(_context);
+    public IInventoryCategoryRepository InventoryCategories
+        => _inventoryCategories ??= new InventoryCategoryRepository(_context);
+    public IInventoryItemRepository InventoryItems
+        => _inventoryItems ??= new InventoryItemRepository(_context);
+    public ISupplierRepository Suppliers
+        => _suppliers ??= new SupplierRepository(_context);
+    public IStockLevelRepository StockLevels
+        => _stockLevels ??= new StockLevelRepository(_context);
+    public IStockBatchRepository StockBatches
+        => _stockBatches ??= new StockBatchRepository(_context);
+    public IStockMovementRepository StockMovements
+        => _stockMovements ??= new StockMovementRepository(_context);
+    public IStockAdjustmentRepository StockAdjustments
+        => _stockAdjustments ??= new StockAdjustmentRepository(_context);
+    public IStockTransferRepository StockTransfers
+        => _stockTransfers ??= new StockTransferRepository(_context);
+    public IPurchaseOrderRepository PurchaseOrders
+        => _purchaseOrders ??= new PurchaseOrderRepository(_context);
+    public IGoodsReceiptRepository GoodsReceipts
+        => _goodsReceipts ??= new GoodsReceiptRepository(_context);
+    public IPurchaseReturnRepository PurchaseReturns
+        => _purchaseReturns ??= new PurchaseReturnRepository(_context);
+    public ISupplierPaymentRepository SupplierPayments
+        => _supplierPayments ??= new SupplierPaymentRepository(_context);
+    public IPhysicalStockCountRepository PhysicalStockCounts
+        => _physicalStockCounts ??= new PhysicalStockCountRepository(_context);
+
+    public IPharmacySaleRepository PharmacySales
+        => _pharmacySales ??= new PharmacySaleRepository(_context);
+
+    public ILabTestCatalogRepository LabTestCatalog
+        => _labTestCatalog ??= new LabTestCatalogRepository(_context);
+    public ILabOrderRepository LabOrders
+        => _labOrders ??= new LabOrderRepository(_context);
+    public ILabResultRepository LabResults
+        => _labResults ??= new LabResultRepository(_context);
+
+    public IRadiologyTestCatalogRepository RadiologyTestCatalog
+        => _radiologyTestCatalog ??= new RadiologyTestCatalogRepository(_context);
+    public IRadiologyOrderRepository RadiologyOrders
+        => _radiologyOrders ??= new RadiologyOrderRepository(_context);
+    public IRadiologyReportRepository RadiologyReports
+        => _radiologyReports ??= new RadiologyReportRepository(_context);
 
     public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         => await _context.SaveChangesAsync(cancellationToken);

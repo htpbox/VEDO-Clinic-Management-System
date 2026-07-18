@@ -14,6 +14,35 @@ public interface IUnitOfWork : IDisposable
     IUserRepository Users { get; }
     ITenantRepository Tenants { get; }
 
+    // Inventory
+    IWarehouseRepository Warehouses { get; }
+    IInventoryCategoryRepository InventoryCategories { get; }
+    IInventoryItemRepository InventoryItems { get; }
+    ISupplierRepository Suppliers { get; }
+    IStockLevelRepository StockLevels { get; }
+    IStockBatchRepository StockBatches { get; }
+    IStockMovementRepository StockMovements { get; }
+    IStockAdjustmentRepository StockAdjustments { get; }
+    IStockTransferRepository StockTransfers { get; }
+    IPurchaseOrderRepository PurchaseOrders { get; }
+    IGoodsReceiptRepository GoodsReceipts { get; }
+    IPurchaseReturnRepository PurchaseReturns { get; }
+    ISupplierPaymentRepository SupplierPayments { get; }
+    IPhysicalStockCountRepository PhysicalStockCounts { get; }
+
+    // Pharmacy
+    IPharmacySaleRepository PharmacySales { get; }
+
+    // Laboratory
+    ILabTestCatalogRepository LabTestCatalog { get; }
+    ILabOrderRepository LabOrders { get; }
+    ILabResultRepository LabResults { get; }
+
+    // Radiology
+    IRadiologyTestCatalogRepository RadiologyTestCatalog { get; }
+    IRadiologyOrderRepository RadiologyOrders { get; }
+    IRadiologyReportRepository RadiologyReports { get; }
+
     // Transaction Management
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     Task BeginTransactionAsync();
