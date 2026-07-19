@@ -23,6 +23,8 @@ public static class ApplicationServiceExtensions
         services.AddScoped<ISettingsService, SettingsService>();
         services.AddScoped<INotificationService, NotificationService>();
         services.AddScoped<IStockService, StockService>();
+        services.AddScoped<IPharmacyService, PharmacyService>();
+        services.AddScoped<IInventoryService, InventoryService>();
 
         // FluentValidation
         services.AddValidatorsFromAssemblyContaining<LoginValidator>();

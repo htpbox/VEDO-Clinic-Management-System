@@ -14,6 +14,7 @@ public class UnitOfWork : IUnitOfWork
     private IAppointmentRepository? _appointments;
     private IEncounterRepository? _encounters;
     private IPrescriptionRepository? _prescriptions;
+    private IPrescriptionItemRepository? _prescriptionItems;
     private IInvoiceRepository? _invoices;
     private IPaymentRepository? _payments;
     private IUserRepository? _users;
@@ -58,6 +59,8 @@ public class UnitOfWork : IUnitOfWork
         => _encounters ??= new EncounterRepository(_context);
     public IPrescriptionRepository Prescriptions
         => _prescriptions ??= new PrescriptionRepository(_context);
+    public IPrescriptionItemRepository PrescriptionItems
+        => _prescriptionItems ??= new PrescriptionItemRepository(_context);
     public IInvoiceRepository Invoices
         => _invoices ??= new InvoiceRepository(_context);
     public IPaymentRepository Payments

@@ -9,6 +9,7 @@ public interface IUnitOfWork : IDisposable
     IAppointmentRepository Appointments { get; }
     IEncounterRepository Encounters { get; }
     IPrescriptionRepository Prescriptions { get; }
+    IPrescriptionItemRepository PrescriptionItems { get; }
     IInvoiceRepository Invoices { get; }
     IPaymentRepository Payments { get; }
     IUserRepository Users { get; }
