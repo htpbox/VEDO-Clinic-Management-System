@@ -37,6 +37,7 @@ public interface IUnitOfWork : IDisposable
     // Laboratory
     ILabTestCatalogRepository LabTestCatalog { get; }
     ILabOrderRepository LabOrders { get; }
+    ILabOrderItemRepository LabOrderItems { get; }
     ILabResultRepository LabResults { get; }
 
     // Radiology

@@ -26,4 +26,5 @@ class AppConstants {
   static const String backupRoute = '/backup';
   static const String inventoryRoute = '/inventory';
   static const String pharmacyRoute = '/pharmacy';
+  static const String laboratoryRoute = '/laboratory';
 }

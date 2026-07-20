@@ -50,6 +50,7 @@ public static class InfrastructureServiceExtensions
         services.AddScoped<IPharmacySaleRepository, PharmacySaleRepository>();
         services.AddScoped<ILabTestCatalogRepository, LabTestCatalogRepository>();
         services.AddScoped<ILabOrderRepository, LabOrderRepository>();
+        services.AddScoped<ILabOrderItemRepository, LabOrderItemRepository>();
         services.AddScoped<ILabResultRepository, LabResultRepository>();
         services.AddScoped<IRadiologyTestCatalogRepository, RadiologyTestCatalogRepository>();
         services.AddScoped<IRadiologyOrderRepository, RadiologyOrderRepository>();

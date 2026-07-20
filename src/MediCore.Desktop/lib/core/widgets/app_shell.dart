@@ -20,6 +20,7 @@ class AppShell extends StatelessWidget {
     if (location == AppConstants.backupRoute) return 'النسخ الاحتياطي';
     if (location == AppConstants.inventoryRoute) return 'المخزون';
     if (location == AppConstants.pharmacyRoute) return 'الصيدلية';
+    if (location == AppConstants.laboratoryRoute) return 'المعمل';
     return AppConstants.appName;
   }
 

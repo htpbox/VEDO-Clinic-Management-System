@@ -7,11 +7,22 @@ import '../../domain/entities/patient.dart';
 import '../providers/patients_notifier.dart';
 import 'edit_patient_screen.dart';
 import '../../../encounters/presentation/screens/encounter_screen.dart';
+import '../../../laboratory/presentation/screens/create_lab_order_screen.dart';
+import '../../../auth/domain/enums/user_role.dart';
+import '../../../auth/presentation/providers/auth_notifier.dart';
 
 class PatientDetailsDialog extends ConsumerWidget {
   final Patient patient;
 
   const PatientDetailsDialog({super.key, required this.patient});
+
+  bool _canOrderTests(WidgetRef ref) {
+    final role = ref.read(authNotifierProvider).user?.role;
+    return role == UserRole.doctor ||
+        role == UserRole.seniorDoctor ||
+        role == UserRole.superAdmin ||
+        role == UserRole.clinicAdmin;
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -99,6 +110,23 @@ class PatientDetailsDialog extends ConsumerWidget {
               icon: const Icon(Icons.medical_services_outlined, size: 18),
               label: const Text('بدء كشف طبي'),
             ),
+            if (_canOrderTests(ref)) ...[
+              const SizedBox(height: 8),
+              OutlinedButton.icon(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  showDialog(
+                    context: context,
+                    builder: (_) => CreateLabOrderScreen(
+                      patientId: patient.id,
+                      patientName: patient.fullName,
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.science_outlined, size: 18),
+                label: const Text('طلب تحاليل'),
+              ),
+            ],
             const SizedBox(height: 12),
             Row(
               children: [

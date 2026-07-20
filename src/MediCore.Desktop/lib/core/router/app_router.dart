@@ -13,6 +13,7 @@ import '../../features/settings/presentation/screens/settings_screen.dart';
 import '../../features/backup/presentation/screens/backup_screen.dart';
 import '../../features/inventory/presentation/screens/inventory_list_screen.dart';
 import '../../features/pharmacy/presentation/screens/pharmacy_sale_screen.dart';
+import '../../features/laboratory/presentation/screens/lab_worklist_screen.dart';
 import '../constants/app_constants.dart';
 import '../widgets/app_shell.dart';
 
@@ -92,6 +93,11 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             path: AppConstants.pharmacyRoute,
             name: 'pharmacy',
             builder: (context, state) => const PharmacySaleScreen(),
+          ),
+          GoRoute(
+            path: AppConstants.laboratoryRoute,
+            name: 'laboratory',
+            builder: (context, state) => const LabWorklistScreen(),
           ),
         ],
       ),

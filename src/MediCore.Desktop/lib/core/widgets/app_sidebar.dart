@@ -20,6 +20,10 @@ class AppSidebar extends ConsumerWidget {
         isAdmin || role == UserRole.accountant;
     final canAccessPharmacyInventory =
         isAdmin || role == UserRole.pharmacist;
+    final canAccessLab = isAdmin ||
+        role == UserRole.labTechnician ||
+        role == UserRole.doctor ||
+        role == UserRole.seniorDoctor;
 
     return Container(
       width: 260,
@@ -110,6 +114,13 @@ class AppSidebar extends ConsumerWidget {
               onTap: () => context.go(AppConstants.pharmacyRoute),
             ),
           ],
+          if (canAccessLab)
+            _SidebarItem(
+              icon: Icons.science_outlined,
+              label: 'المعمل',
+              isActive: currentLocation == AppConstants.laboratoryRoute,
+              onTap: () => context.go(AppConstants.laboratoryRoute),
+            ),
           _SidebarItem(
             icon: Icons.settings_outlined,
             label: 'الإعدادات',

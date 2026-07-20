@@ -39,6 +39,7 @@ public class UnitOfWork : IUnitOfWork
 
     private ILabTestCatalogRepository? _labTestCatalog;
     private ILabOrderRepository? _labOrders;
+    private ILabOrderItemRepository? _labOrderItems;
     private ILabResultRepository? _labResults;
 
     private IRadiologyTestCatalogRepository? _radiologyTestCatalog;
@@ -106,6 +107,8 @@ public class UnitOfWork : IUnitOfWork
         => _labTestCatalog ??= new LabTestCatalogRepository(_context);
     public ILabOrderRepository LabOrders
         => _labOrders ??= new LabOrderRepository(_context);
+    public ILabOrderItemRepository LabOrderItems
+        => _labOrderItems ??= new LabOrderItemRepository(_context);
     public ILabResultRepository LabResults
         => _labResults ??= new LabResultRepository(_context);
 
