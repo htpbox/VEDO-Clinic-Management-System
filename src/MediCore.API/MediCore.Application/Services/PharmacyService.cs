@@ -38,6 +38,9 @@ public class PharmacyService : IPharmacyService
         if (dto.Items.Count == 0)
             return ApiResponse<PharmacySaleDto>.Fail("يجب إضافة صنف واحد على الأقل");
 
+        if (!Enum.TryParse<PharmacySaleType>(dto.SaleType, true, out var saleType))
+            return ApiResponse<PharmacySaleDto>.Fail("نوع عملية البيع غير صحيح");
+
         var sale = new PharmacySale
         {
             TenantId = tenantId,
@@ -45,7 +48,7 @@ public class PharmacyService : IPharmacyService
             WarehouseId = dto.WarehouseId,
             PatientId = dto.PatientId,
             PrescriptionId = dto.PrescriptionId,
-            SaleType = dto.SaleType,
+            SaleType = saleType,
             Status = PharmacySaleStatus.Completed,
             SoldBy = soldBy,
         };
@@ -65,7 +68,7 @@ public class PharmacyService : IPharmacyService
                 WarehouseId = dto.WarehouseId,
                 ItemId = line.ItemId,
                 Quantity = line.Quantity,
-                MovementType = dto.SaleType == PharmacySaleType.PrescriptionDispense
+                MovementType = saleType == PharmacySaleType.PrescriptionDispense
                     ? StockMovementType.Dispense
                     : StockMovementType.Sale,
                 ReferenceType = nameof(PharmacySale),
@@ -206,8 +209,8 @@ public class PharmacyService : IPharmacyService
             PatientId = sale.PatientId,
             PrescriptionId = sale.PrescriptionId,
             InvoiceId = sale.InvoiceId,
-            SaleType = sale.SaleType,
-            Status = sale.Status,
+            SaleType = sale.SaleType.ToString(),
+            Status = sale.Status.ToString(),
             SaleDate = sale.SaleDate,
             TotalAmount = sale.TotalAmount,
             Items = itemDtos,

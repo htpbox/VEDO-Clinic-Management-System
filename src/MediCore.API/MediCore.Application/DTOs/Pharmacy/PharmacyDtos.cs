@@ -17,7 +17,7 @@ public class CreatePharmacySaleDto
     public Guid WarehouseId { get; set; }
     public Guid? PatientId { get; set; }
     public Guid? PrescriptionId { get; set; }
-    public PharmacySaleType SaleType { get; set; } = PharmacySaleType.Retail;
+    public string SaleType { get; set; } = "Retail";
 
     /// <summary>If true, an Invoice is created and linked automatically via the existing Invoices module.</summary>
     public bool CreateInvoice { get; set; } = true;
@@ -41,8 +41,8 @@ public class PharmacySaleDto
     public Guid? PatientId { get; set; }
     public Guid? PrescriptionId { get; set; }
     public Guid? InvoiceId { get; set; }
-    public PharmacySaleType SaleType { get; set; }
-    public PharmacySaleStatus Status { get; set; }
+    public string SaleType { get; set; } = string.Empty;
+    public string Status { get; set; } = string.Empty;
     public DateTime SaleDate { get; set; }
     public decimal TotalAmount { get; set; }
     public List<PharmacySaleItemDto> Items { get; set; } = new();

@@ -18,6 +18,8 @@ class AppSidebar extends ConsumerWidget {
         role == UserRole.superAdmin || role == UserRole.clinicAdmin;
     final canViewReports =
         isAdmin || role == UserRole.accountant;
+    final canAccessPharmacyInventory =
+        isAdmin || role == UserRole.pharmacist;
 
     return Container(
       width: 260,
@@ -94,6 +96,20 @@ class AppSidebar extends ConsumerWidget {
               isActive: currentLocation == AppConstants.reportsRoute,
               onTap: () => context.go(AppConstants.reportsRoute),
             ),
+          if (canAccessPharmacyInventory) ...[
+            _SidebarItem(
+              icon: Icons.inventory_2_outlined,
+              label: 'المخزون',
+              isActive: currentLocation == AppConstants.inventoryRoute,
+              onTap: () => context.go(AppConstants.inventoryRoute),
+            ),
+            _SidebarItem(
+              icon: Icons.medication_outlined,
+              label: 'الصيدلية',
+              isActive: currentLocation == AppConstants.pharmacyRoute,
+              onTap: () => context.go(AppConstants.pharmacyRoute),
+            ),
+          ],
           _SidebarItem(
             icon: Icons.settings_outlined,
             label: 'الإعدادات',

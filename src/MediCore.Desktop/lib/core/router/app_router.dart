@@ -11,6 +11,8 @@ import '../../features/staff/presentation/screens/staff_list_screen.dart';
 import '../../features/reports/presentation/screens/reports_screen.dart';
 import '../../features/settings/presentation/screens/settings_screen.dart';
 import '../../features/backup/presentation/screens/backup_screen.dart';
+import '../../features/inventory/presentation/screens/inventory_list_screen.dart';
+import '../../features/pharmacy/presentation/screens/pharmacy_sale_screen.dart';
 import '../constants/app_constants.dart';
 import '../widgets/app_shell.dart';
 
@@ -80,6 +82,16 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             path: AppConstants.backupRoute,
             name: 'backup',
             builder: (context, state) => const BackupScreen(),
+          ),
+          GoRoute(
+            path: AppConstants.inventoryRoute,
+            name: 'inventory',
+            builder: (context, state) => const InventoryListScreen(),
+          ),
+          GoRoute(
+            path: AppConstants.pharmacyRoute,
+            name: 'pharmacy',
+            builder: (context, state) => const PharmacySaleScreen(),
           ),
         ],
       ),

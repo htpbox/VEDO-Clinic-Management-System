@@ -1,5 +1,4 @@
 using MediCore.Application.Interfaces.Services;
-using MediCore.Domain.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,7 +19,10 @@ public class NotificationsController : ControllerBase
     [HttpPost("test")]
     public async Task<IActionResult> SendTest([FromBody] SendTestNotificationRequest request)
     {
-        var result = await _notificationService.SendTestNotificationAsync(request.To, request.Channel);
+        if (!Enum.TryParse<Domain.Enums.NotificationChannel>(request.Channel, true, out var channel))
+            return BadRequest("قناة الإشعار غير صحيحة");
+
+        var result = await _notificationService.SendTestNotificationAsync(request.To, channel);
         return result.Success ? Ok(result) : BadRequest(result);
     }
 
@@ -39,5 +41,5 @@ public class NotificationsController : ControllerBase
 public class SendTestNotificationRequest
 {
     public string To { get; set; } = string.Empty;
-    public NotificationChannel Channel { get; set; } = NotificationChannel.Sms;
+    public string Channel { get; set; } = "Sms";
 }
